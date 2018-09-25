@@ -20,16 +20,20 @@ function isPrefix() {
   return function(cardNum) {
   
     let sampleStr = cardNum.slice(0,2);
-    if (argumentCopy.length >2 ) {
+    //if i have 2 arguments or more, the sample string (##) will match with everything in argument for a match. 
+    if (argumentCopy.length > 1 ) {
       return argumentCopy.includes( Number(sampleStr) );
     }
-   
-    if (argumentCopy.length === 1) {
+   //if argument is 1 and its 1-9, then return a match if the first number is a single digit specified.
+    if (argumentCopy.length === 1 && argumentCopy[0]%10 === argumentCopy[0]) {
         return (Number(cardNum[0]) === argumentCopy[0]);
+    } else {
+      return argumentCopy.includes( Number(sampleStr) );
     }
-    if (Number(sampleStr) === argumentCopy[0] || Number(sampleStr) === argumentCopy[1]) {
-        return true;
-    } 
+    //if it gets pass all that. let's say it has 2 arguments. it does the same thing as the first part.
+    // if (Number(sampleStr) === argumentCopy[0] || Number(sampleStr) === argumentCopy[1]) {
+    //     return true;
+    // } 
     return false;
   }
 }
@@ -47,15 +51,24 @@ var detectNetwork = function(cardNumber) {
   let checkAmex = isPrefix(34,37);
   let checkVisa = isPrefix(4);
   let checkMast = isPrefix(51,52,53,54,55);
-  let checkDiscWeird = isPrefix(60); //need that 11
-  let checkDiscWeird2 = isPrefix(11);
-  let checkDiscRange =isPrefix(64); //need 5-9
-
-  let checkDisc65= isPrefix(65);
+  let checkDisc60X = isPrefix(60); //need that 11
+  let checkDiscX11 = isPrefix(11);
+  let checkDisc6X = isPrefix(6); //need 45-49
+  let checkDiscX44To49 = isPrefix(44,45,46,47,48,49)
   // MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
   //Visa always has a prefix of 4 and a length of 13, 16, or 19.
 
   let cardLength = cardNumber.length;
+  if (checkDisc60X(cardNumber) && [16,19].includes(cardLength)) {
+    if ( checkDiscX11( cardNumber.slice(2) ) ) {
+      return 'Discover';      
+    }
+  }
+  if (checkDisc6X(cardNumber) && [16,19].includes(cardLength)) {
+    if (checkDiscX44To49(cardNumber.slice(1))) {
+      return 'Discover';
+    }
+  }
   if (checkDiner(cardNumber) && cardLength === 14) {
     return `Diner's Club`;
   }
