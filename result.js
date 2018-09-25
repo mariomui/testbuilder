@@ -1,23 +1,24 @@
+//imports the testing function from helpers
+//imports the function to be tested from detectnetwork
 const {assertEquals} = require('./helpers.js');
 const detectNetwork = require('./detectNetwork.js');
 
+//Diner's TESTS
 assertEquals(detectNetwork(`38345678901234`),`Diner's Club`, `dc`);
 assertEquals(detectNetwork(`39345678901234`),`Diner's Club`, `dc`);
 assertEquals(detectNetwork('38345678901234'), `Diner's Club`, 'dclub');
-
+//AMEX TESTS
 assertEquals(detectNetwork('343456789012345'),'American Express', "amex");
 assertEquals(detectNetwork('373456789012345'),'American Express', "amex");
 assertEquals(detectNetwork('343456789012345'),'American Express', "amex");
-
-
 //random string.
 assertEquals(detectNetwork('3834567890123433'), `not found`, 'dclub');
 assertEquals(detectNetwork('3834567890123334'), `not found`, 'dclub');
 
-
-//Visa tests.
+//Visa TESTS using ARRAYS.
 let visaArr = [`4123456789012` ,`4123456789012345`, `4923456789012345678`];
 let visaFailArr = ['444214', `4554555435234525423523434234242`];
+
 for (let i=0; i < visaArr.length; ++i) {
     assertEquals(detectNetwork(visaArr[i]),'Visa','visatest');
 }
@@ -25,6 +26,7 @@ for (let i=0; i < visaFailArr.length; ++i) {
     assertEquals(detectNetwork(visaFailArr[i]),'not found','failvisatest');
 }
 
+//MASTERCARD TESTS
 let masterCardArr = [
     `5112345678901234`,
     `5212345678901234`,

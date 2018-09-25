@@ -15,19 +15,19 @@
 //   }
 // }
 
-function isPrefix(prefixOne, prefixTwo) {
+function isPrefix() {
   let argumentCopy = Array.from(arguments).slice(0);
   return function(cardNum) {
   
     let sampleStr = cardNum.slice(0,2);
-    if (argumentCopy.length === 5) {
+    if (argumentCopy.length >2 ) {
       return argumentCopy.includes( Number(sampleStr) );
     }
    
-    if (argumentCopy.length === 1 && prefixOne === 4) {
-        return (Number(cardNum[0]) === prefixOne);
+    if (argumentCopy.length === 1) {
+        return (Number(cardNum[0]) === argumentCopy[0]);
     }
-    if (Number(sampleStr) === prefixOne || Number(sampleStr) === prefixTwo) {
+    if (Number(sampleStr) === argumentCopy[0] || Number(sampleStr) === argumentCopy[1]) {
         return true;
     } 
     return false;
@@ -35,21 +35,23 @@ function isPrefix(prefixOne, prefixTwo) {
 }
 
 
+
 var detectNetwork = function(cardNumber) {
-  // if (!(typeof cardNumber === 'string') ) {
-  //   return "bad string";
-  // }
+ 
   // Note: `cardNumber` will always be a string
   
   // The American Express network always starts with a 34 or 37 and is 15 digits long
-  
-  // Once you've read this, go ahead and try to implement this function, then return to the console.
   
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
   let checkDiner = isPrefix(38,39);
   let checkAmex = isPrefix(34,37);
   let checkVisa = isPrefix(4);
   let checkMast = isPrefix(51,52,53,54,55);
+  let checkDiscWeird = isPrefix(60); //need that 11
+  let checkDiscWeird2 = isPrefix(11);
+  let checkDiscRange =isPrefix(64); //need 5-9
+
+  let checkDisc65= isPrefix(65);
   // MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
   //Visa always has a prefix of 4 and a length of 13, 16, or 19.
 

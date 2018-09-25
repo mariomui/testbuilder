@@ -24,8 +24,16 @@
 Step 2:
 Nice work! Extend your function to support two popular networks, Visa and Mastercard:
 
-Visa always has a prefix of 4 and a length of 13, 16, or 19.
-MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
+* The American Express network always starts with a 34 or 37 and is 15 digits long
+
+* The Diner's Club network always starts with a 38 or 39 and is 14 digits long
+
+* Visa always has a prefix of 4 and a length of 13, 16, or 19.
+
+* MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
+
+D* iscover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
+* Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
 
 Make sure that you continue to support Diner's Club and American Express cards. Keep testing your implementation here in the console.
 
