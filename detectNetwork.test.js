@@ -338,5 +338,9 @@ describe('Maestro', function() {
   // Write full test coverage for the Maestro card
 });
 
-describe('should support China UnionPay')
+describe('should support China UnionPay', function() {
+  it('622126 len16', function() {
+    detectNetwork('6221263424342425').should.equal('UnionPay');
+  })
+})
 describe('should support Switch')

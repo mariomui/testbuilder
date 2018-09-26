@@ -66,10 +66,23 @@ var detectNetwork = function(cardNumber) {
   let checkMae63 = isPrefix(63);
   let checkMae0 = isPrefix(0);
   let checkMae4 = isPrefix(4);
+  //62 
+  let check62 = isPrefix(62);
+  let check2 = isPrefix(2);
 
-
-  //====Maestro=======
   let cardLength = cardNumber.length;
+  
+  if (check62(cardNumber) && [16,17,18,19].includes(cardLength)) {
+    if(check2( cardNumber.slice(2,3) ) ) {
+        let joob = Number(cardNumber.slice(3,6));
+        if (joob >= 126 || joob <= 925) {
+          return 'UnionPay';
+        }
+      }
+  }
+  
+  
+  //====Maestro=======
   //5018,5020,5038
   if (checkMae50X(cardNumber) && [12,13,14,15,16,17,18,19].includes(cardLength)) {
     if ( checkMaeXn3( cardNumber.slice(2) ) ) {
