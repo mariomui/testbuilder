@@ -107,15 +107,15 @@ describe('MasterCard', function() {
   //   http://chaijs.com/api/bdd/
   var expect = chai.expect;
  
-  it("Should equal to mastercard", function() {
+  it("51->16 len mastercard", function() {
     expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
   });
  
-  it("should equal to mastercard", function() {
+  it("prefix 52 -> 16 len", function() {
     expect(detectNetwork('5212345678901234')).to.equal('MasterCard');
   });
  
-  it("it should equal to Mastercard", function() {
+  it("53 prefix ->16 len to Mastercard", function() {
     expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
   });
  
@@ -146,6 +146,24 @@ describe('Discover', function() {
     detectNetwork('6011444444444444').should.equal('Discover');
   });
   it('has a prefix of 6011 and a length of 19', function() {
+    detectNetwork('6011333322221111333').should.equal('Discover');
+  });
+  it('has a prefix of 644 and a length of 16', function() {
+    detectNetwork('6442948834388888').should.equal('Discover');
+  });
+  it('has a prefix of 645 and a length of 16', function() {
+    detectNetwork('6454595433488548').should.equal('Discover');
+  });
+  it('has a prefix of 646 and a length of 16', function() {
+    detectNetwork('6464534455234532').should.equal('Discover');
+  });
+  it('has a prefix of 644 and a length of 19', function() {
+    detectNetwork('6444535443343535326').should.equal('Discover');
+  });
+  it('has a prefix of 65 and a length of 16', function() {
+    detectNetwork('6011333322221111333').should.equal('Discover');
+  });
+  it('has a prefix of 65 and a length of 19', function() {
     detectNetwork('6011333322221111333').should.equal('Discover');
   });
 });
