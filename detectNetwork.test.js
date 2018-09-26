@@ -179,7 +179,7 @@ describe('Maestro', function() {
     detectNetwork('503844443333432').should.equal('Maestro');
   })
   it('it has a prefix of 6304 and a lenght of 19', function() {
-    detectNetwork('6034444433334321342').should.equal('Maestro');
+    detectNetwork('6304444433334321342').should.equal('Maestro');
   })
   // Write full test coverage for the Maestro card
 });

@@ -77,7 +77,7 @@ var detectNetwork = function(cardNumber) {
     }
   }
   //6304
-  if (checkMae63X(cardNumber) && [12,13,14,15,16,17,18,19].includes(cardLength)) {
+  if (checkMae63(cardNumber) && [12,13,14,15,16,17,18,19].includes(cardLength)) {
     if ( checkMae0( cardNumber.slice(2) ) ) {
       if ( checkMae4( cardNumber.slice(3) ) ) {
         return 'Maestro';
