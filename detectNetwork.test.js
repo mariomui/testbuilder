@@ -166,6 +166,81 @@ describe('Discover', function() {
   it('has a prefix of 65 and a length of 19', function() {
     detectNetwork('6011333322221111333').should.equal('Discover');
   });
+////
+it('has a prefix of 6011 and a length of 16', function() {
+  detectNetwork('6011444444444444').should.equal('Discover');
+});
+it('has a prefix of 6011 and a length of 19', function() {
+  detectNetwork('6011333322221111333').should.equal('Discover');
+});
+it('has a prefix of 644 and a length of 16', function() {
+  detectNetwork('6442948834388888').should.equal('Discover');
+});
+it('has a prefix of 645 and a length of 16', function() {
+  detectNetwork('6454595433488548').should.equal('Discover');
+});
+it('has a prefix of 646 and a length of 16', function() {
+  detectNetwork('6464534455234532').should.equal('Discover');
+});
+it('has a prefix of 644 and a length of 19', function() {
+  detectNetwork('6444535443343535326').should.equal('Discover');
+});
+it('has a prefix of 65 and a length of 16', function() {
+  detectNetwork('6011333322221111333').should.equal('Discover');
+});
+it('has a prefix of 65 and a length of 19', function() {
+  detectNetwork('6011333322221111333').should.equal('Discover');
+});
+
+it('it has a prefix of 649 and a lenght of 16', function() {
+  detectNetwork('6494444433331342').should.equal('Discover');
+});
+it('it has a prefix of 649 and a lenght of 16', function() {
+  detectNetwork('6494443334321342').should.equal('Discover');
+});
+it('it has a prefix of 649 and a lenght of 16', function() {
+  detectNetwork('6494443994321342').should.equal('Discover');
+});
+it('it has a prefix of 648 and a lenght of 19', function() {
+  detectNetwork('6484444433334321342').should.equal('Discover');
+});
+it('it has a prefix of 648 and a lenght of 16', function() {
+  detectNetwork('6484444434321342').should.equal('Discover');
+});
+it('it has a prefix of 647 and a lenght of 19', function() {
+  detectNetwork('6474444433334321342').should.equal('Discover');
+});
+it('it has a prefix of 647and a lenght of 16', function() {
+  detectNetwork('6474443334321342').should.equal('Discover');
+});
+it('it has a prefix of 646 and a lenght of 19', function() {
+  detectNetwork('6464444433334321342').should.equal('Discover');
+});
+it('it has a prefix of 645 and a lenght of 19', function() {
+  detectNetwork('6454444433334321342').should.equal('Discover');
+});
+it('it has a prefix of 65 and a lenght of 19', function() {
+  detectNetwork('6504444433334321342').should.equal('Discover');
+});
+it('it has a prefix of 65 and a lenght of 16', function() {
+  detectNetwork('6504888334321342').should.equal('Discover');
+});
+it('it has a prefix of 649 and a lenght of 19', function() {
+  detectNetwork('6494823488334321342').should.equal('Discover');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+////
 });
 
 describe('Maestro', function() {
