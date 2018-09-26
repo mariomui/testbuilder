@@ -69,10 +69,13 @@ var detectNetwork = function(cardNumber) {
   //62 
   let check62 = isPrefix(62);
   let check2 = isPrefix(2);
-
+  let check4To6 = isPrefix(4,5,6);
   let cardLength = cardNumber.length;
-  
+  //6221260622925
   if (check62(cardNumber) && [16,17,18,19].includes(cardLength)) {
+    if (check4To6(cardNumber.slice(2,3))) {
+      return 'UnionPay';
+    }
     if(check2( cardNumber.slice(2,3) ) ) {
         let joob = Number(cardNumber.slice(3,6));
         if (joob >= 126 || joob <= 925) {
@@ -80,6 +83,8 @@ var detectNetwork = function(cardNumber) {
         }
       }
   }
+  624-626
+
   
   
   //====Maestro=======
