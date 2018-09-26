@@ -55,9 +55,11 @@ var detectNetwork = function(cardNumber) {
   let checkDiscX11 = isPrefix(11);
   let checkDisc6X = isPrefix(6); //need 45-49
   let checkDiscX44To49 = isPrefix(44,45,46,47,48,49)
+  let checkDisc65 = isPrefix(65);
   // MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
   //Visa always has a prefix of 4 and a length of 13, 16, or 19.
 
+//==========DISCOVER=============
   let cardLength = cardNumber.length;
   if (checkDisc60X(cardNumber) && [16,19].includes(cardLength)) {
     if ( checkDiscX11( cardNumber.slice(2) ) ) {
@@ -69,6 +71,10 @@ var detectNetwork = function(cardNumber) {
       return 'Discover';
     }
   }
+  if (checkDisc65(cardNumber) && [16,19].includes(cardLength) ) {
+    return 'Discover';
+  }
+//==========DISCOVER============
   if (checkDiner(cardNumber) && cardLength === 14) {
     return `Diner's Club`;
   }

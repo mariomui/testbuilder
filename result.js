@@ -47,8 +47,13 @@ for (let i = 0; i < masterCardArr.length; ++i) {
 for (let i = 0; i < masterCardFailArr.length; ++i) {
     assertEquals( detectNetwork(masterCardFailArr[i]),"not found", 'failMasterCard Passed');
 }
-
+//644-699
 let discoverArr = [
+    `6011999999923434`,
+    `6011999323341434`,
+    `6011945899923434`,
+    '6011341358477757884',
+    '6011349348328488488',
     `6441123443255323`,
     `6454534245359898`,
     `6468902485958288`,
@@ -58,6 +63,12 @@ let discoverArr = [
     `6479489348593584545`,
     `6484084295893458349`,
     `6443285345349588888`,
+    '6534983948329483288',
+    '6548338727348785437',
+    '6534334223438484',
+    '6534321311438484',
+    '6523434434438484',
+     
 ];
 
 for (let i = 0; i < discoverArr.length; ++i) {
