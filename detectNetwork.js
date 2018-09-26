@@ -150,11 +150,20 @@ var detectNetwork = function(cardNumber) {
     return 'American Express'; //i really want to do double quotes but a coder friend told me to do single.
   }
   if (checkVisa(cardNumber) && [13,16,19].includes(cardLength) ) {
-    if (!check49(cardNumber) ){
-      return 'Visa';
-    } else if (check49(cardNumber) && [16,19].includes(cardLength)) {
-      return 'Switch';
+    if (check49(cardNumber) && [16,19].includes(cardLength) ) {
+        if (checkMae0(cardNumber.slice(1,2))) {
+          if (check3Or5(cardNumber.slice(2,3))) {
+              return "Switch";
+          }
+        }  
+        if (checkDiscX11(cardNumber.slice(2,4))) {
+          return "Switch";
+        }  
+        if (check11Or36(cardNumber.slice(2,4))) {
+          return "Switch";
+        }
     }
+    return "Visa";
   }
   if (checkMast(cardNumber) && cardLength === 16) {
     return 'MasterCard';
