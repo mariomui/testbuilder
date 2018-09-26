@@ -428,4 +428,28 @@ describe('Switch', function() {
 //(p: 624 l: 16)(p: 624 l: 17)(p: 624 l: 19)(p: 625 l: 17)(p: 625 l: 18)(p: 625 l: 19)(p: 626 l: 16)(p: 626 l: 17)(p: 626 l: 18)(p: 6282 l: 16)(p: 6282 l: 17)(p: 6282 l: 18)(p: 6283 l: 16)(p: 6283 l: 17)(p: 6283 l: 19)(p: 6284 l: 16)(p: 6284 l: 18)(p: 6284 l: 19)(p: 6285 l: 16)(p: 6285 l: 17)(p: 6285 l: 18)(p: 6285 l: 19)(p: 6286 l: 16)(p: 6286 l: 17)(p: 6286 l: 18)(p: 6286 l: 19)(p: 6287 l: 16)(p: 6287 l: 17)(p: 6287 l: 18)(p: 6287 l: 19)(p: 6288 l: 16)(p: 6288 l: 17)(p: 6288 l: 18)(p: 6288 l: 19)
 // for (let i=624)
 
-// for (var prefix = 644; prefix <= 649; prefix++) {  (function(prefix) {    it('has a prefix of ' + prefix + ' and a length of 16');    it('has a prefix of ' + prefix + ' and a length of 19');  })(prefix)}
+for (var prefix = 644; prefix <= 649; prefix++) {  
+  (function(prefix) {    
+    it('has a prefix of ' + prefix + ' and a length of 16');   
+    it('has a prefix of ' + prefix + ' and a length of 19');  
+  })(prefix)
+}
+//622126-622925 first.
+//622126, 16, 17, 18, 19
+//16 - 6 = 10 numbers to randomly generate
+// 6 + 10 = massaged Num
+for (let i = 622126; i < 622925; ++i) {
+  
+  it( `has a prefis of ${i} and a lenght of 16`, function() {
+    detectNetwork(massagedNum).should.equal("UnionPay");  
+  }) 
+}
+
+it('4903 len16', function() {
+  detectNetwork('4903430424342425').should.equal('Switch');
+})
+
+//random is upper - lower 10-1 =9/2 =5 not that random.
+//random is .1 it's always something /10
+// xo is initial
+//
