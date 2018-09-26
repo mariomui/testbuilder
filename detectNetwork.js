@@ -44,23 +44,47 @@ var detectNetwork = function(cardNumber) {
  
   // Note: `cardNumber` will always be a string
   
-  // The American Express network always starts with a 34 or 37 and is 15 digits long
   
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
   let checkDiner = isPrefix(38,39);
+  // The American Express network always starts with a 34 or 37 and is 15 digits long
   let checkAmex = isPrefix(34,37);
+  //Visa always has a prefix of 4 and a length of 13, 16, or 19.
   let checkVisa = isPrefix(4);
+  // MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
   let checkMast = isPrefix(51,52,53,54,55);
+  //discover
   let checkDisc60X = isPrefix(60); //need that 11
   let checkDiscX11 = isPrefix(11);
   let checkDisc6X = isPrefix(6); //need 45-49
-  let checkDiscX44To49 = isPrefix(44,45,46,47,48,49)
+  let checkDiscX44To49 = isPrefix(44,45,46,47,48,49);
   let checkDisc65 = isPrefix(65);
-  // MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
-  //Visa always has a prefix of 4 and a length of 13, 16, or 19.
+  //Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
+  let checkMae50X = isPrefix(50);
+  let checkMaeXn3 = isPrefix(18,20,38);
+  //6304
+  let checkMae63 = isPrefix(63);
+  let checkMae0 = isPrefix(0);
+  let checkMae4 = isPrefix(4);
 
-//==========DISCOVER=============
+
+  //====Maestro=======
   let cardLength = cardNumber.length;
+  //5018,5020,5038
+  if (checkMae50X(cardNumber) && [12,13,14,15,16,17,18,19].includes(cardLength)) {
+    if ( checkMaeXn3( cardNumber.slice(2) ) ) {
+      return 'Maestro';      
+    }
+  }
+  //6304
+  if (checkMae63X(cardNumber) && [12,13,14,15,16,17,18,19].includes(cardLength)) {
+    if ( checkMae0( cardNumber.slice(2) ) ) {
+      if ( checkMae4( cardNumber.slice(3) ) ) {
+        return 'Maestro';
+      }
+    }
+  }
+  //==========DISCOVER=============
   if (checkDisc60X(cardNumber) && [16,19].includes(cardLength)) {
     if ( checkDiscX11( cardNumber.slice(2) ) ) {
       return 'Discover';      
@@ -74,7 +98,7 @@ var detectNetwork = function(cardNumber) {
   if (checkDisc65(cardNumber) && [16,19].includes(cardLength) ) {
     return 'Discover';
   }
-//==========DISCOVER============
+//==========Basic 4============
   if (checkDiner(cardNumber) && cardLength === 14) {
     return `Diner's Club`;
   }
