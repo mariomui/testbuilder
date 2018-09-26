@@ -354,5 +354,15 @@ describe('should support China UnionPay', function() {
   it('626 len19', function() {
     detectNetwork('6269243042234342425').should.equal('UnionPay');
   })
+  //6282-6288
+  it('6282 len19', function() {
+    detectNetwork('6282243042234342425').should.equal('UnionPay');
+  })
+  it('6283 len18', function() {
+    detectNetwork('628324304224342425').should.equal('UnionPay');
+  })
+  it('6284 len17', function() {
+    detectNetwork('62842430424342425').should.equal('UnionPay');
+  })
 })
 describe('should support Switch')

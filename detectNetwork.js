@@ -70,11 +70,19 @@ var detectNetwork = function(cardNumber) {
   let check62 = isPrefix(62);
   let check2 = isPrefix(2);
   let check4To6 = isPrefix(4,5,6);
+  let check8 = isPrefix(8);
+  let check2To8 = isPrefix(2,3,4,5,6,7,8);
+
   let cardLength = cardNumber.length;
   //6221260622925
   if (check62(cardNumber) && [16,17,18,19].includes(cardLength)) {
     if (check4To6(cardNumber.slice(2,3))) {
       return 'UnionPay';
+    }
+    if (check8(cardNumber.slice(2,3))) {
+      if (check2To8(cardNumber.slice(3,4))) {
+        return 'UnionPay';
+      }
     }
     if(check2( cardNumber.slice(2,3) ) ) {
         let joob = Number(cardNumber.slice(3,6));
