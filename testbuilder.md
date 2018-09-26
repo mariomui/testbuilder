@@ -33,6 +33,11 @@ Nice work! Extend your function to support two popular networks, Visa and Master
 * MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
 
 * Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
+* China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
+* Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
+
+* Heads up! Switch and Visa seem to have some overlapping card numbers - in any apparent conflict, you should choose the network with the longer prefix.
+
 * Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
 
 Make sure that you continue to support Diner's Club and American Express cards. Keep testing your implementation here in the console.

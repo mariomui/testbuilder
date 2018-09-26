@@ -364,5 +364,19 @@ describe('should support China UnionPay', function() {
   it('6284 len17', function() {
     detectNetwork('62842430424342425').should.equal('UnionPay');
   })
+
+  //4903, 4905, 4911, 4936
+  it('4903 len16', function() {
+    detectNetwork('4903430424342425').should.equal('Switch');
+  })
+  it('4905 len18', function() {
+    detectNetwork('490520430424342425').should.equal('Switch');
+  })
+  it('4911 len19', function() {
+    detectNetwork('4911243042434200425').should.equal('Switch');
+  })
+  it('4936 len17', function() {
+    detectNetwork('49364304204342425').should.equal('Switch');
+  })
 })
 describe('should support Switch')

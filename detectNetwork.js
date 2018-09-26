@@ -72,9 +72,27 @@ var detectNetwork = function(cardNumber) {
   let check4To6 = isPrefix(4,5,6);
   let check8 = isPrefix(8);
   let check2To8 = isPrefix(2,3,4,5,6,7,8);
-
+  //49
+  let check49 = isPrefix(49);
+  let check3Or5 = isPrefix(3,5);
+  let check11Or36 = isPrefix(11,36);
   let cardLength = cardNumber.length;
-  //6221260622925
+  //4:->16 4:19 conflicts. So push switch up top.
+  //4903//4905
+  if (check49(cardNumber) && [16,18,19].includes(cardLength) ) {
+    if (checkMae0(cardNumber.slice(1,2))) {
+      if (check3Or5(cardNumber.slice(2,3))) {
+          return "Switch";
+      }
+    }  
+    if (checkDiscX11(cardNumber.slice(2,4))) {
+      return "Switch";
+    }  
+    if (check11Or36(cardNumber.slice(2,4))) {
+      return "Switch";
+    }
+  }
+  //6221260622925 Union Pay
   if (check62(cardNumber) && [16,17,18,19].includes(cardLength)) {
     if (check4To6(cardNumber.slice(2,3))) {
       return 'UnionPay';
@@ -91,8 +109,8 @@ var detectNetwork = function(cardNumber) {
         }
       }
   }
-  624-626
-
+////////////// Switch
+  //49
   
   
   //====Maestro=======
@@ -132,7 +150,11 @@ var detectNetwork = function(cardNumber) {
     return 'American Express'; //i really want to do double quotes but a coder friend told me to do single.
   }
   if (checkVisa(cardNumber) && [13,16,19].includes(cardLength) ) {
-    return 'Visa';
+    if (!check49(cardNumber) ){
+      return 'Visa';
+    } else if (check49(cardNumber) && [16,19].includes(cardLength)) {
+      return 'Switch';
+    }
   }
   if (checkMast(cardNumber) && cardLength === 16) {
     return 'MasterCard';
