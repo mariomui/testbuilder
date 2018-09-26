@@ -1,3 +1,5 @@
+// const {superFunction} = require('./super-function.js');
+
 /*
  * You'll eventually be given instructions how to use this file
  * If you want to use it before then, you'll have to figure it out yourself
@@ -364,6 +366,9 @@ describe('should support China UnionPay', function() {
   it('6284 len17', function() {
     detectNetwork('62842430424342425').should.equal('UnionPay');
   })
+  superFunction([16,17,18,19],624,626,'UnionPay');
+  superFunction([16,17,18,19],6282,6288,'UnionPay');
+  superFunction([16,17,18,19],622126,622295,'UnionPay');
 
 })
 describe('Switch', function() {
@@ -422,34 +427,63 @@ describe('Switch', function() {
     it('6333 len19', function() {
       detectNetwork('6333034424204343434').should.equal('Switch');
     })
+
 }) 
+
+
+
+function superFunction(arr, start, stop, cardCo) {
+
+  // let arr= [16,17,18,19];
+  let fillLength = 0;
+  let i=0;
+  let counter = 0; //metronome.
+  // let stop = 622126;
+  while ( start < stop) {
+      i = counter%arr.length;
+      fillLength = (Math.abs(arr[i]-start.toString().length) || 1);
+      describe (cardCo, function() {
+          it(`${start} prefix with the len ${arr[i]}`, function() {    
+              detectNetwork(`${start.toString()}${Math.random().toFixed(fillLength).split('.')[1]}`).should.equal(cardCo);
+          });
+      })
+     
+  counter++;//running counter.
+  if (arr[i] === 19) {
+      start++;
+  } 
+  }
+
+}
+
+
 
 //633110, 6333
 //(p: 624 l: 16)(p: 624 l: 17)(p: 624 l: 19)(p: 625 l: 17)(p: 625 l: 18)(p: 625 l: 19)(p: 626 l: 16)(p: 626 l: 17)(p: 626 l: 18)(p: 6282 l: 16)(p: 6282 l: 17)(p: 6282 l: 18)(p: 6283 l: 16)(p: 6283 l: 17)(p: 6283 l: 19)(p: 6284 l: 16)(p: 6284 l: 18)(p: 6284 l: 19)(p: 6285 l: 16)(p: 6285 l: 17)(p: 6285 l: 18)(p: 6285 l: 19)(p: 6286 l: 16)(p: 6286 l: 17)(p: 6286 l: 18)(p: 6286 l: 19)(p: 6287 l: 16)(p: 6287 l: 17)(p: 6287 l: 18)(p: 6287 l: 19)(p: 6288 l: 16)(p: 6288 l: 17)(p: 6288 l: 18)(p: 6288 l: 19)
 // for (let i=624)
 
-for (var prefix = 644; prefix <= 649; prefix++) {  
-  (function(prefix) {    
-    it('has a prefix of ' + prefix + ' and a length of 16');   
-    it('has a prefix of ' + prefix + ' and a length of 19');  
-  })(prefix)
-}
+// for (var prefix = 644; prefix <= 649; prefix++) {  
+//   (function(prefix) {    
+//     it('has a prefix of ' + prefix + ' and a length of 16');   
+//     it('has a prefix of ' + prefix + ' and a length of 19');  
+//   })(prefix)
+// }
 //622126-622925 first.
 //622126, 16, 17, 18, 19
 //16 - 6 = 10 numbers to randomly generate
 // 6 + 10 = massaged Num
-for (let i = 622126; i < 622925; ++i) {
-  
-  it( `has a prefis of ${i} and a lenght of 16`, function() {
-    detectNetwork(massagedNum).should.equal("UnionPay");  
-  }) 
-}
+/*
+loop through my array, find the number, create an array with that number and [num,...16-num]
+*/
 
-it('4903 len16', function() {
-  detectNetwork('4903430424342425').should.equal('Switch');
-})
 
-//random is upper - lower 10-1 =9/2 =5 not that random.
-//random is .1 it's always something /10
-// xo is initial
-//
+// for (let i = 622126; i < 622925; ++i) {
+//   i%arr.leng
+//   it( `has a prefix of ${i} and a lenght of ${j}`, function() {
+//     detectNetwork(massagedNum).should.equal("UnionPay");  
+//   }) 
+// }
+
+// it('4903 len16', function() {
+//   detectNetwork('4903430424342425').should.equal('Switch');
+// })
