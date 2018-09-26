@@ -76,22 +76,31 @@ var detectNetwork = function(cardNumber) {
   let check49 = isPrefix(49);
   let check3Or5 = isPrefix(3,5);
   let check11Or36 = isPrefix(11,36);
+  let check56 = isPrefix(56);
+  let check41 = isPrefix(41);
+  let check82 = isPrefix(82);
+  let check31 = isPrefix(31);
+  let check33 = isPrefix(33);
+  let check10 = isPrefix(10);
+  let check67 = isPrefix(67);
+  let check59 = isPrefix(59);
+
   let cardLength = cardNumber.length;
-  //4:->16 4:19 conflicts. So push switch up top.
-  //4903//4905
-  if (check49(cardNumber) && [16,18,19].includes(cardLength) ) {
-    if (checkMae0(cardNumber.slice(1,2))) {
-      if (check3Or5(cardNumber.slice(2,3))) {
-          return "Switch";
-      }
-    }  
-    if (checkDiscX11(cardNumber.slice(2,4))) {
-      return "Switch";
-    }  
-    if (check11Or36(cardNumber.slice(2,4))) {
+  //6759
+  if (check67(cardNumber) && [16,18,19].includes(cardLength)) {
+    if (check59(cardNumber.slice(2,4))) {
       return "Switch";
     }
   }
+
+  if (check56(cardNumber)) {
+    if (check41(cardNumber.slice(2,4))) {
+      if(check82(cardNumber.slice(4,6))) {
+        return 'Switch';
+      }
+    }
+  }
+
   //6221260622925 Union Pay
   if (check62(cardNumber) && [16,17,18,19].includes(cardLength)) {
     if (check4To6(cardNumber.slice(2,3))) {
@@ -127,6 +136,18 @@ var detectNetwork = function(cardNumber) {
         return 'Maestro';
       }
     }
+
+    if ([16,18,19].includes(cardLength)) {
+      //63310, 6333, 6759
+      if (check31(cardNumber.slice(2,4))) {
+        if (check10(cardNumber.slice(4,6))) {
+            return 'Switch';
+        }
+      }
+      if (check33(cardNumber.slice(2,4))) {
+          return 'Switch';
+      }
+    }
   }
   //==========DISCOVER=============
   if (checkDisc60X(cardNumber) && [16,19].includes(cardLength)) {
@@ -149,21 +170,21 @@ var detectNetwork = function(cardNumber) {
   if (checkAmex(cardNumber) && cardLength === 15) {
     return 'American Express'; //i really want to do double quotes but a coder friend told me to do single.
   }
-  if (checkVisa(cardNumber) && [13,16,19].includes(cardLength) ) {
-    if (check49(cardNumber) && [16,19].includes(cardLength) ) {
-        if (checkMae0(cardNumber.slice(1,2))) {
-          if (check3Or5(cardNumber.slice(2,3))) {
+  if (checkVisa(cardNumber) && [13,16,18,19].includes(cardLength) ) {
+    if (check49(cardNumber) && [16,18,19].includes(cardLength)) {
+        if (checkMae0(cardNumber.slice(2,3))) {
+            if (check3Or5(cardNumber.slice(3,4))) {
               return "Switch";
-          }
-        }  
-        if (checkDiscX11(cardNumber.slice(2,4))) {
-          return "Switch";
-        }  
+            }
+        }
         if (check11Or36(cardNumber.slice(2,4))) {
           return "Switch";
         }
     }
-    return "Visa";
+    if (cardLength !== 18) {
+
+      return 'Visa';
+    }
   }
   if (checkMast(cardNumber) && cardLength === 16) {
     return 'MasterCard';
