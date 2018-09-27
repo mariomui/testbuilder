@@ -434,100 +434,10 @@ describe('China UnionPay', function() {
   // superFunction([16,17,18,19],622126,622295, 'China UnionPay');
  
 })
-
-describe('Switch', function() {
-    //4903, 4905, 4911, 4936
-
-    it('4903 len16', function() {
-      detectNetwork('4903430424342425').should.equal('Switch');
-    })
-    it('4905 len18', function() {
-      detectNetwork('490520430424342425').should.equal('Switch');
-    })
-    it('4911 len19', function() {
-      detectNetwork('4911243042434200425').should.equal('Switch');
-    })
-    it('4936 len18', function() {
-      detectNetwork('49364304204d342425').should.equal('Switch');
-    })
-    it('4905 len18', function() {
-      detectNetwork('490543598032848254').should.equal('Switch');
-    })
-    it('56418 len18', function() {
-      detectNetwork('5641823434144134').should.equal('Switch');
-    })
-    it('56518 len18', function() {
-      detectNetwork('564182343554144134').should.equal('Switch');
-    })
-    it('56418 len19', function() {
-      detectNetwork('5641823434034454134').should.equal('Switch');
-    })
-    it('6759 len19', function() {
-      detectNetwork('6759348948343443498').should.equal('Switch');
-    })
-    it('6759 len16', function() {
-      detectNetwork('6759348943443498').should.equal('Switch');
-    })
-    it('6759 len18', function() {
-      detectNetwork('675934898343443498').should.equal('Switch');
-    })
-    it('6759 len18', function() {
-      detectNetwork('675934898343443498').should.equal('Switch');
-    })
-    it('633110 len16', function() {
-      detectNetwork('6331103234242342').should.equal('Switch');
-    })
-    it('633110 len18', function() {
-      detectNetwork('633110342424343434').should.equal('Switch');
-    })
-    it('633110 len19', function() {
-      detectNetwork('6331103442424343434').should.equal('Switch');
-    })
-    it('6333 len16', function() {
-      detectNetwork('6333003424343434').should.equal('Switch');
-    })
-    it('6333 len18', function() {
-      detectNetwork('633330342143443324').should.equal('Switch');
-    })
-    it('6333 len19', function() {
-      detectNetwork('6333034424204343434').should.equal('Switch');
-    })
-
-}) 
-
-
-
-
-function superFunction(arr, start, stop, cardCo) {
-
-  // let arr= [16,17,18,19];
-  let fillLength = 0;
-  let i=0;
-  let counter = 0; //metronome.
-  // let stop = 622126;
-  while ( start < stop) {
-      i = counter%arr.length;
-      fillLength = (Math.abs(arr[i]-start.toString().length) || 1);
-      (function() {
-          it(`${start} prefix with the len ${arr[i]}`, function() {    
-              detectNetwork(`${start
-                .toString()}${Math
-                  .random()
-                  .toFixed(fillLength)
-                  .split('.')[1]}`).should.equal(cardCo);
-            });
-          })()
-     
-      counter++;//running counter.
-      if (arr[i] === 19) {
-          start++;
-      } 
-  }
-
-}
 describe ("Switch New", function() {
+  //this should be much faster since i took out a for loop.
   const lengthArr = [16,18,19];
-  const prefixArr = [4903,4905,4911,4936];
+  const prefixArr = [4903,4905,4911,4936,564182,633110,6333,6759];
   let moduloCount = 0;
   let lenCycler, prefixCycler = 0;
   while(prefixCycler < prefixArr.length) {
