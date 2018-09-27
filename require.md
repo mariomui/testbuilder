@@ -17,4 +17,34 @@ for (var prefix = 644; prefix <= 649; prefix++) {
             it('has a prefix of ' + prefix + ' and a length of 19');
         })(prefix)
 }
-```
+
+for (let prefix = 6282; prefix <= 6288; prefix++) {  
+        for( let i=16 ; i<=19; ++i) {
+              let fillLength = i-4;
+              (function(prefix,i) {
+                it('has a prefix of ' + prefix + ' and a length of'+i, function() {
+                  detectNetwork(`${prefix
+                    .toString()}${Math.random()
+                      .toFixed(fillLength)
+                      .split('.')[1]}`)
+                      .should.equal("China UnionPay");
+                });
+                })(prefix,i)   
+          }
+      }
+
+      for (let prefix = 6282; prefix <= 6288; prefix++) {  
+        for( let i=16 ; i<=19; ++i) {
+              let fillLength = i-4;
+              (function(prefix,i) {
+                it('has a prefix of ' + prefix + ' and a length of'+i, function() {
+                  detectNetwork(`${prefix
+                    .toString()}${Math.random()
+                      .toFixed(fillLength)
+                      .split('.')[1]}`)
+                      .should.equal("China UnionPay");
+                });
+                })(prefix,i)   
+          }
+      }
+      ```

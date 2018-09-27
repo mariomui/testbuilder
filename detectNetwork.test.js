@@ -340,90 +340,88 @@ describe('Maestro', function() {
   // Write full test coverage for the Maestro card
 });
 
-// describe('China UnionPay', function() {
-//   var should = chai.should;
- 
-//     for (let prefix = 624; prefix <= 626; prefix++) {  
-//       for( let i=16 ; i<=19; ++i) {
-//           let fillLength = i-3;
-//           it('has a prefix of ' + prefix + ' and a length of'+i), function(){
-//             detectNetwork(`${prefix.toString()}${Math.random().toFixed(fillLength).split('.')[1]}`).should.equal("China UnionPay");
-//           }  
-//       }
-//     }
-// });
 describe('China UnionPay Auto', function() {
-    for (let prefix = 624; prefix <= 626; prefix++) {  
-        for( let i=16 ; i<=19; ++i) {
-              let fillLength = i-3;
-              (function(prefix,i) {
-                it('has a prefix of ' + prefix + ' and a length of'+i, function() {
-                  detectNetwork(`${prefix
-                    .toString()}${Math.random()
-                      .toFixed(fillLength)
-                      .split('.')[1]}`)
-                      .should.equal("China UnionPay");
-                });
-                })(prefix,i)   
-          }
-      }
-    for (let prefix = 6282; prefix <= 6288; prefix++) {  
-        for( let i=16 ; i<=19; ++i) {
-              let fillLength = i-4;
-              (function(prefix,i) {
-                it('has a prefix of ' + prefix + ' and a length of'+i, function() {
-                  detectNetwork(`${prefix
-                    .toString()}${Math.random()
-                      .toFixed(fillLength)
-                      .split('.')[1]}`)
-                      .should.equal("China UnionPay");
-                });
-                })(prefix,i)   
-          }
-      }
-    for (let prefix = 622126; prefix <= 622925; prefix++) {  
-        for( let i=16 ; i<=19; ++i) {
-              let fillLength = i-6;
-              (function(prefix,i) {
-                it('has a prefix of ' + prefix + ' and a length of'+i, function() {
-                  detectNetwork(`${prefix
-                    .toString()}${Math.random()
-                      .toFixed(fillLength)
-                      .split('.')[1]}`)
-                      .should.equal("China UnionPay");
-                });
-                })(prefix,i)   
-          }
-      }
-});
-describe('China UnionPay', function() {
-  var should = chai.should();
+  const lengthArr = [16,17,18,19];
+  let moduloCount = 0;
+    for (let prefix = 624; prefix <= 626; moduloCount++) { 
+              let lengthInd = moduloCount%lengthArr.length; 
+              let prefixLength = prefix.toString().length
+              let fillLength = lengthArr[lengthInd]-prefixLength;
+              const currentLen = lengthArr[lengthInd];
 
-  it('622126 len16', function() {
-    detectNetwork('6221263424342425').should.equal('China UnionPay');
-  })
-  it('622924 len18', function() {
-    detectNetwork('622924342234342425').should.equal('China UnionPay');
-  })
-  it('624 len18', function() {
-    detectNetwork('624924342234342425').should.equal('China UnionPay');
-  })
-  it('625 len16', function() {
-    detectNetwork('6259242234342425').should.equal('China UnionPay');
-  })
-  it('626 len19', function() {
-    detectNetwork('6269243042234342425').should.equal('China UnionPay');
-  })
-  //6282-6288
-  it('6282 len19', function() {
-    detectNetwork('6282243042234342425').should.equal('China UnionPay');
-  })
-  it('6283 len18', function() {
-    detectNetwork('628324304224342425').should.equal('China UnionPay');
-  })
-  it('6284 len17', function() {
-    detectNetwork('62842430424342425').should.equal('China UnionPay');
-  })
+              (function(prefix,currentLen,fillLength) {
+                it('has a prefix of ' + prefix + ' and a length of'+currentLen, function() {
+                  detectNetwork(`${prefix
+                    .toString()}${Math.random()
+                      .toFixed(fillLength)
+                      .split('.')[1]}`)
+                      .should.equal("China UnionPay");
+                }); 
+              })(prefix,currentLen,fillLength) 
+             
+              if (currentLen === lengthArr[lengthArr.length-1]) {
+                prefix++;    
+              }  
+      }
+      moduloCount=0;
+    for (let prefix = 6282; prefix <= 6288; moduloCount++) { 
+              let lengthInd = moduloCount%lengthArr.length;
+              let prefixLength = prefix.toString().length
+              let fillLength = lengthArr[lengthInd]-prefixLength;
+              const currentLen = lengthArr[lengthInd];
+
+              (function(prefix,currentLen,fillLength) {
+                it('has a prefix of ' + prefix + ' and a length of'+currentLen, function() {
+                  detectNetwork(`${prefix
+                    .toString()}${Math.random()
+                      .toFixed(fillLength)
+                      .split('.')[1]}`)
+                      .should.equal("China UnionPay");
+                }); 
+              })(prefix,currentLen,fillLength) 
+             
+              if (currentLen === lengthArr[lengthArr.length-1]) {
+                prefix++;    
+              }  
+      }
+      moduloCount=0;
+    for (let prefix = 622126; prefix <= 622925; moduloCount++) { 
+              let lengthInd = moduloCount%lengthArr.length;
+              let prefixLength = prefix.toString().length
+              let fillLength = lengthArr[lengthInd]-prefixLength;
+              const currentLen = lengthArr[lengthInd];
+
+              (function(prefix,currentLen,fillLength) {
+                it('has a prefix of ' + prefix + ' and a length of'+currentLen, function() {
+                  detectNetwork(`${prefix
+                    .toString()}${Math.random()
+                      .toFixed(fillLength)
+                      .split('.')[1]}`)
+                      .should.equal("China UnionPay");
+                }); 
+              })(prefix,currentLen,fillLength) 
+             
+              if (currentLen === lengthArr[lengthArr.length-1]) {
+                prefix++;    
+              }  
+      }
+    
+    // for (let prefix = 622126; prefix <= 622925; prefix++) {  
+    //     for( let i=16 ; i<=19; ++i) {
+    //           let fillLength = i-6;
+    //           (function(prefix,i) {
+    //             it('has a prefix of ' + prefix + ' and a length of'+i, function() {
+    //               detectNetwork(`${prefix
+    //                 .toString()}${Math.random()
+    //                   .toFixed(fillLength)
+    //                   .split('.')[1]}`)
+    //                   .should.equal("China UnionPay");
+    //             });
+    //             })(prefix,i)   
+    //       }
+    //   }
+});
+//3.2s
   
   
   // it ('624 len16', function() {
@@ -433,12 +431,13 @@ describe('China UnionPay', function() {
   // superFunction([16,17,18,19],6282,6288,'China UnionPay');
   // superFunction([16,17,18,19],622126,622295, 'China UnionPay');
  
-})
 describe ("Switch New", function() {
   //this should be much faster since i took out a for loop.
   const lengthArr = [16,18,19];
   const prefixArr = [4903,4905,4911,4936,564182,633110,6333,6759];
   let moduloCount = 0;
+  //modulo count is a running total that gets modded with say 4.
+  //you'll constantly loop through 0 1 2 3, linearly.
   let lenCycler, prefixCycler = 0;
   while(prefixCycler < prefixArr.length) {
     
