@@ -445,9 +445,8 @@ describe ("Switch New", function() {
     let dynamicLen = lengthArr[lenCycler]-prefixArr[prefixCycler].toString().length;
     (function(prefixArr,lengthArr,lenCycler,prefixCycler){
       it(`${prefixArr[prefixCycler]} with the length of ${lengthArr[lenCycler]}`, function() {
-        detectNetwork(`${prefixArr[prefixCycler]
-          .toString()}${Math
-            .random().toFixed(dynamicLen).split('.')[1]}`);
+        detectNetwork((genNum(prefixArr[prefixCycler])(), dynamicLen))
+            .should.equal("Switch");
 
       });
     })(prefixArr,lengthArr,lenCycler,prefixCycler)
@@ -459,6 +458,11 @@ describe ("Switch New", function() {
   }
 });
 
+function genNum(prefix, dynamicLen) {
+  return `${prefix}
+    .toString()}${Math
+      .random().toFixed(dynamicLen).split('.')[1]}`;
+}
 //633110, 6333
 //(p: 624 l: 16)(p: 624 l: 17)(p: 624 l: 19)(p: 625 l: 17)(p: 625 l: 18)(p: 625 l: 19)(p: 626 l: 16)(p: 626 l: 17)(p: 626 l: 18)(p: 6282 l: 16)(p: 6282 l: 17)(p: 6282 l: 18)(p: 6283 l: 16)(p: 6283 l: 17)(p: 6283 l: 19)(p: 6284 l: 16)(p: 6284 l: 18)(p: 6284 l: 19)(p: 6285 l: 16)(p: 6285 l: 17)(p: 6285 l: 18)(p: 6285 l: 19)(p: 6286 l: 16)(p: 6286 l: 17)(p: 6286 l: 18)(p: 6286 l: 19)(p: 6287 l: 16)(p: 6287 l: 17)(p: 6287 l: 18)(p: 6287 l: 19)(p: 6288 l: 16)(p: 6288 l: 17)(p: 6288 l: 18)(p: 6288 l: 19)
 // for (let i=624)
