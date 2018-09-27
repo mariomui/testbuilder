@@ -447,7 +447,7 @@ describe ("Switch New", function() {
       it(`${prefixArr[prefixCycler]} with the length of ${lengthArr[lenCycler]}`, function() {
         detectNetwork(`${prefixArr[prefixCycler]
           .toString()}${Math
-            .random().toFixed(dynamicLen).split('.')[1]}`);
+            .random().toFixed(dynamicLen).split('.')[1]}`).should.equal("Switch");
 
       });
     })(prefixArr,lengthArr,lenCycler,prefixCycler)
