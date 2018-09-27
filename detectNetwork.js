@@ -104,17 +104,17 @@ var detectNetwork = function(cardNumber) {
   //6221260622925 Union Pay
   if (check62(cardNumber) && [16,17,18,19].includes(cardLength)) {
     if (check4To6(cardNumber.slice(2,3))) {
-      return 'UnionPay';
+      return 'China UnionPay';
     }
     if (check8(cardNumber.slice(2,3))) {
       if (check2To8(cardNumber.slice(3,4))) {
-        return 'UnionPay';
+        return 'China UnionPay';
       }
     }
     if(check2( cardNumber.slice(2,3) ) ) {
         let joob = Number(cardNumber.slice(3,6));
         if (joob >= 126 || joob <= 925) {
-          return 'UnionPay';
+          return 'China UnionPay';
         }
       }
   }
@@ -192,7 +192,7 @@ var detectNetwork = function(cardNumber) {
   return "not found";
 }
 
-module.exports = detectNetwork;
+// module.exports = detectNetwork;
 
 
 

@@ -28,12 +28,12 @@ Nice work! Extend your function to support two popular networks, Visa and Master
 
 * The Diner's Club network always starts with a 38 or 39 and is 14 digits long
 
-* Visa always has a prefix of 4 and a length of 13, 16, or 19.
 
 * MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
 
 * Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
 * China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
+* Visa always has a prefix of 4 and a length of 13, 16, or 19.
 * Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
 
 * Heads up! Switch and Visa seem to have some overlapping card numbers - in any apparent conflict, you should choose the network with the longer prefix.
