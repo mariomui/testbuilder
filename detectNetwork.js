@@ -163,7 +163,7 @@ var detectNetwork = function(cardNumber) {
   if (checkDisc65(cardNumber) && [16,19].includes(cardLength) ) {
     return 'Discover';
   }
-//==========Basic 4============
+//==========Diner's, Amex, Visa(switch conflicts), masterCard ============
   if (checkDiner(cardNumber) && cardLength === 14) {
     return `Diner's Club`;
   }
@@ -193,7 +193,7 @@ var detectNetwork = function(cardNumber) {
 }
 
 // module.exports = detectNetwork;
-
+// in order for result.js to work this export must be activated.
 
 
 

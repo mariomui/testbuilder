@@ -1,3 +1,8 @@
+# testbuilder refactor
+* change the inputs to detectNetwork to strings so 04 can be without going through anotehr if statement.
+* rename all the checkDiscs to their individual numbers and order the functions by numbers
+* I bet if i i point the functions to the prototype of my functionMaker i can save some memory.
+
 # Testbuilder
 *Use Cmd K V to open this up in vcode for previewing*
 *  write a function that can 

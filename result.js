@@ -1,5 +1,8 @@
+//i have deactivated result.js for the time being.
+// if you wnat to reactivate, please go to detectNetwork and export the module on the last line.
+
 //imports the testing function from helpers
-//imports the function to be tested from detectnetwork
+//imports the detectNetworkfunction to be tested from detectnetwork
 const {assertEquals} = require('./helpers.js');
 const detectNetwork = require('./detectNetwork.js');
 
