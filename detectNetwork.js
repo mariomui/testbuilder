@@ -192,7 +192,7 @@ var detectNetwork = function(cardNumber) {
   return "not found";
 }
 
-module.exports = detectNetwork;
+//module.exports = detectNetwork;
 
 
 
