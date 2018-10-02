@@ -192,13 +192,8 @@ var detectNetwork = function(cardNumber) {
   return "not found";
 }
 
-<<<<<<< HEAD
 // module.exports = detectNetwork;
 // in order for result.js to work this export must be activated.
-=======
-//module.exports = detectNetwork;
-
->>>>>>> 1157a3f0d972b9058e382721265d73b8388a03d6
 
 
 
